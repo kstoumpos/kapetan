@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== TikTok Sans (18pt optical size, Expanded width) — display/heading font ===== */
+@font-face {
+  font-family: 'TikTok Sans';
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  src: url(fonts/TikTokSans-Light.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'TikTok Sans';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url(fonts/TikTokSans-Regular.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'TikTok Sans';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url(fonts/TikTokSans-Medium.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'TikTok Sans';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url(fonts/TikTokSans-SemiBold.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'TikTok Sans';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url(fonts/TikTokSans-Bold.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'TikTok Sans';
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+  src: url(fonts/TikTokSans-ExtraBold.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'TikTok Sans';
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+  src: url(fonts/TikTokSans-Black.woff2) format('woff2');
+}
+
+/* ===== Gilmer — body / section-title font ===== */
+@font-face {
+  font-family: 'Gilmer';
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  src: url(fonts/Gilmer-Light.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Gilmer';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url(fonts/Gilmer-Regular.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Gilmer';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url(fonts/Gilmer-Medium.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Gilmer';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url(fonts/Gilmer-Bold.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Gilmer';
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+  src: url(fonts/Gilmer-Heavy.woff2) format('woff2');
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Gilmer', ui-sans-serif, system-ui, sans-serif; }
+/* Built strictly from the official palette: brand blue -> navy (kapetan-website-brand-sheet.pdf, p.2) */
+.ocean-gradient { background: linear-gradient(180deg, #0055FD 0%, #071A3F 100%); }
+.eyebrow { letter-spacing: 0.25em; }
+
+/* Typography scale, per brand style guide — mobile sizes by default, desktop (>=768px) overrides below */
+.h1-display { font-family: 'TikTok Sans', ui-sans-serif, sans-serif; font-weight: 800; font-size: 27px; line-height: 1.1; }
+.h2-display { font-family: 'TikTok Sans', ui-sans-serif, sans-serif; font-weight: 700; font-size: 22px; line-height: 1.15; }
+.h3-display { font-family: 'TikTok Sans', ui-sans-serif, sans-serif; font-weight: 700; font-size: 20px; line-height: 1.2; }
+.text-body { font-family: 'Gilmer', ui-sans-serif, sans-serif; font-size: 15px; }
+.text-section-title { font-family: 'Gilmer', ui-sans-serif, sans-serif; font-size: 13px; }
+
+@media (min-width: 768px) {
+  .h1-display { font-size: 55px; line-height: 1.05; }
+  .h2-display { font-size: 35px; line-height: 1.1; }
+  .h3-display { font-size: 30px; line-height: 1.15; }
+
+  /* Hero headline: looser line-height on desktop, per request */
+  #hero-heading { line-height: 1.5; }
+}
+
+/* "Who We Are" intro heading: lighter weight than the shared .h3-display
+   bold, looser line-height, with only the closing sentence bolded back
+   via the .font-bold span inside it. */
+#who-we-are-heading {
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* ===== Scroll-reveal animations — fast, run once (brand sheet animation note 4) ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.38s cubic-bezier(.16,.84,.44,1), transform 0.38s cubic-bezier(.16,.84,.44,1);
+}
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+.reveal-delay-1 { transition-delay: 70ms; }
+.reveal-delay-2 { transition-delay: 140ms; }
+
+/* staggered reveal for a row/grid of children (logos, cards, etc.) */
+.reveal-group > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.32s cubic-bezier(.16,.84,.44,1), transform 0.32s cubic-bezier(.16,.84,.44,1);
+}
+.reveal-group.is-visible > * { opacity: 1; transform: translateY(0); }
+.reveal-group.is-visible > *:nth-child(1) { transition-delay: 0ms; }
+.reveal-group.is-visible > *:nth-child(2) { transition-delay: 55ms; }
+.reveal-group.is-visible > *:nth-child(3) { transition-delay: 110ms; }
+.reveal-group.is-visible > *:nth-child(4) { transition-delay: 165ms; }
+.reveal-group.is-visible > *:nth-child(5) { transition-delay: 220ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-group > * {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ===== Partner logos — slow infinite marquee ===== */
+.marquee-wrap {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
+.marquee-track {
+  animation: marquee-scroll 38s linear infinite;
+}
+.marquee-wrap:hover .marquee-track,
+.marquee-wrap:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none !important; transform: none !important; }
+}
+
+/* ===== Hero parallax ===== */
+#hero-bg-img { will-change: transform; }
+
+/* ===== Hero audience toggle — hover state ===== */
+.audience-tab {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.audience-tab:hover {
+  background-color: #ffffff;
+  color: #0055FD;
+}
+
+/* ===== Accessible focus states ===== */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid #0055FD;
+  outline-offset: 3px;
+  border-radius: 2px;
+}

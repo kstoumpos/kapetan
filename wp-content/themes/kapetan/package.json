@@ -1,0 +1,12 @@
+{
+  "name": "kapetan",
+  "version": "1.0.0",
+  "description": "Converted from the approved static build (`kapetan-homepage.html` + `kapetan-case-study.html`). Copy and section-for-section markup are unchanged; only asset paths and internal links were made WordPress-aware.",
+  "main": "tailwind.config.wp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
